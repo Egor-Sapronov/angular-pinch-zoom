@@ -143,6 +143,16 @@ angular.module('ngPinchZoom', [])
     function touchendHandler(evt) {
       var touches = evt.originalEvent ? evt.originalEvent.touches : evt.touches;
 
+      // tap event
+      if (mode === '' && moveX === 0 && moveY === 0) {
+        positionX = 0;
+        positionY = 0;
+        scale = 1;
+        transformElement(0.1);
+        mode = '';
+        return;
+      }
+
       if (mode === '' || touches.length > 0) {
         return;
       }
